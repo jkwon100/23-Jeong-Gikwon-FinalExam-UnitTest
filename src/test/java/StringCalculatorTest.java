@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StringCalculatorTest {
-    private StringCalculator manipulatedstring;
+    private NegativeString manipulatedstring;
 
     @BeforeEach
     public void setUp() {
@@ -19,9 +19,39 @@ public class StringCalculatorTest {
 
 //    This test checks basic functionality for the add()
     @Test
-    public void testCount1() {
-        manipulatedstring.add("1, 2");
-        int expectedResult = 4;
-        assertEquals(4, expectedResult);
+    public void testAdd1() {
+        int result = manipulatedstring.add("1, 2");
+        int expectedResult = 3;
+        assertEquals(expectedResult, result);
+    }
+    @Test
+    public void testAdd2() {
+        int result = manipulatedstring.add("1, 1002");
+        int expectedResult = 3;
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testAdd3() {
+        int result = manipulatedstring.add("1, 2004");
+        int expectedResult = 5;
+        assertEquals(expectedResult, result);
+    }
+
+
+    @Test
+    public void testAddException1() {
+        IllegalArgumentException thrown =
+                assertThrows(IllegalArgumentException.class, () -> {
+                    manipulatedstring.add("1,-2");
+                }, "negative number -2 was entered.");
+    }
+
+    @Test
+    public void testAddException2() {
+        IllegalArgumentException thrown =
+                assertThrows(IllegalArgumentException.class, () -> {
+                    manipulatedstring.add("-1,2");
+                }, "negative number -1 was entered.");
     }
 }
