@@ -1,4 +1,4 @@
-public class StringCalculator {
+public class NegativeString extends StringCalculator{
     public static int add(String numbers) {
         int returnValue=0;
         String[] numbersArray = numbers.split(",|\n");
@@ -7,10 +7,12 @@ public class StringCalculator {
         } else {
             for (String number : numbersArray) {
                 if (!number.trim().isEmpty()) {
-                    returnValue+=Integer.parseInt(number.trim()); // If it is not a number, parseInt will throw an exception
+                    int i = Integer.parseInt(number.trim()); // If it is not a number, parseInt will throw an exception
+                    if (i < 0) throw new IllegalArgumentException("negative number " + Integer.parseInt(number.trim()) + " was entered."); //
+                    else returnValue += i;
                 }
             }
         }
-        return returnValue;
+        return returnValue%1000;
     }
 }
