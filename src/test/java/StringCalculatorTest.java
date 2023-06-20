@@ -24,6 +24,7 @@ public class StringCalculatorTest {
         int expectedResult = 3;
         assertEquals(expectedResult, result);
     }
+//  This tests the case for when the value exceeds 1000
     @Test
     public void testAdd2() {
         int result = manipulatedstring.add("1, 1002");
@@ -31,6 +32,7 @@ public class StringCalculatorTest {
         assertEquals(expectedResult, result);
     }
 
+//  This tests the case for when the value exceeds 1000
     @Test
     public void testAdd3() {
         int result = manipulatedstring.add("1, 2004");
@@ -38,7 +40,7 @@ public class StringCalculatorTest {
         assertEquals(expectedResult, result);
     }
 
-
+//  This tests the case for when negative value is entered
     @Test
     public void testAddException1() {
         IllegalArgumentException thrown =
